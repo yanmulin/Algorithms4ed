@@ -30,3 +30,12 @@
 *.exe
 *.out
 *.app
+
+# vscode files
+*/.vscode/*
+
+# gtest
+gtest/*
+
+# Res
+Res/*
