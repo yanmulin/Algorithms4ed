@@ -24,6 +24,7 @@
  *  4039
  *
  ******************************************************************************/
+package ch1.ThreeSum;
 
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdOut;
@@ -43,6 +44,7 @@ import edu.princeton.cs.algs4.Stopwatch;
  * @author Robert Sedgewick
  * @author Kevin Wayne
  */
+
 public class ThreeSum {
 
     // Do not instantiate.

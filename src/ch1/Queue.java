@@ -1,3 +1,6 @@
+package ch1;
+
+import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdOut;
 
 import java.util.Iterator;
@@ -26,6 +29,7 @@ public class Queue<Item> implements Iterable<Item> {
         Item item = first.item;
         first = first.next;
         N--;
+        if (isEmpty()) last = first;
         return item;
     }
 
@@ -56,14 +60,23 @@ public class Queue<Item> implements Iterable<Item> {
     }
 
     public static void main(String[] args) {
-        Queue<String> queue = new Queue<String>();
-        for (String word : args) {
-            queue.enqueue(word);
+        Queue<Integer> q = new Queue<>();//自动装箱，拆箱
+        if (!q.isEmpty()) StdOut.println("init not empty!");
+        In in = new In("algs4-data/1Kints.txt");
+        int[] data = in.readAllInts();
+        for (int i = 0; i < data.length; i++)
+            q.enqueue(data[i]);
+        StdOut.println("size: " + q.size());
+
+        int cnt = 0;
+        for (int item : q) {
+            cnt++;
         }
-        for (String word : queue) {
-            StdOut.println(word);
+        if (cnt != q.size()) StdOut.println("iterator size not match");
+
+        for (int i = 0; i < data.length; i++) {
+            if (q.dequeue() != data[i]) StdOut.println("#" + i + "not match");
         }
-        while (!queue.isEmpty())
-            StdOut.println(queue.dequeue());
+        if (!q.isEmpty()) StdOut.println("last not empty!");
     }
 }

@@ -1,3 +1,5 @@
+package ch1.VisualAccumulator;
+
 import edu.princeton.cs.algs4.StdDraw;
 
 public class VisualAccumulator {

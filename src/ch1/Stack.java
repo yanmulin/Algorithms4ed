@@ -1,3 +1,6 @@
+package ch1;
+
+import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdOut;
 
 import java.util.Iterator;
@@ -21,6 +24,7 @@ public class Stack<Item> implements Iterable<Item> {
     }
 
     public Item pop() {
+        assert !isEmpty();
         Item item = first.item;
         first = first.next;
         N--;
@@ -54,13 +58,23 @@ public class Stack<Item> implements Iterable<Item> {
     }
 
     public static void main(String[] args) {
-        Stack<String> stk = new Stack<String>();
-        for (String word : args)
-            stk.push(word);
-        for (String word : stk)
-            StdOut.println(word);
-        while (!stk.isEmpty()) {
-            StdOut.println(stk.pop());
+        Stack<Integer> stk = new Stack<>();//自动装箱，拆箱
+        if (!stk.isEmpty()) StdOut.println("init not empty!");
+        In in = new In("algs4-data/1Kints.txt");
+        int[] data = in.readAllInts();
+        for (int i = 0; i < data.length; i++)
+            stk.push(data[i]);
+        StdOut.println("size: " + stk.size());
+
+        int cnt = 0;
+        for (int item : stk) {
+            cnt++;
         }
+        if (cnt != stk.size()) StdOut.println("iterator size not match");
+
+        for (int i = data.length - 1; i >= 0; i--) {
+            if (stk.pop() != data[i]) StdOut.println("#" + i + "not match");
+        }
+        if (!stk.isEmpty()) StdOut.println("last not empty!");
     }
 }
