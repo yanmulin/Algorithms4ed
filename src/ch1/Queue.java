@@ -10,8 +10,8 @@ public class Queue<Item> implements Iterable<Item> {
     private int N;
 
     private class Node {
-        Item item;
-        Node next;
+        public Item item;
+        public Node next;
     }
 
     public void enqueue(Item item) {
