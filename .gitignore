@@ -38,4 +38,4 @@ slides/*
 hs_err_pid*
 
 # else
-.DS_Store
+*/.DS_Store
