@@ -1,17 +1,32 @@
-package ch1;
+package chapter1_3;
 
-import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdOut;
 
 import java.util.Iterator;
 
-public class Stack<Item> implements Iterable<Item> {
+public class StackCopy<Item> implements Iterable<Item> {
     private Node first;
     private int N;
 
     private class Node {
         Item item;
         Node next;
+    }
+
+    public StackCopy() {
+    }
+
+    public StackCopy(StackCopy<Item> s) {
+        Node dummy = new Node();
+        Node x = dummy;
+        Node p = s.first;
+        while (p != null) {
+            x.next = new Node();
+            x = x.next;
+            x.item = p.item;
+            p = p.next;
+        }
+        first = dummy.next;
     }
 
     public void push(Item item) {
@@ -58,23 +73,14 @@ public class Stack<Item> implements Iterable<Item> {
     }
 
     public static void main(String[] args) {
-        Stack<Integer> stk = new Stack<>();//自动装箱，拆箱
-        if (!stk.isEmpty()) StdOut.println("init not empty!");
-        In in = new In("algs4-data/1Kints.txt");
-        int[] data = in.readAllInts();
-        for (int i = 0; i < data.length; i++)
-            stk.push(data[i]);
-        StdOut.println("size: " + stk.size());
-
-        int cnt = 0;
-        for (int item : stk) {
-            cnt++;
-        }
-        if (cnt != stk.size()) StdOut.println("iterator size not match");
-
-        for (int i = data.length - 1; i >= 0; i--) {
-            if (stk.pop() != data[i]) StdOut.println("#" + i + "not match");
-        }
-        if (!stk.isEmpty()) StdOut.println("last not empty!");
+        StackCopy<Integer> q = new StackCopy<>();//自动装箱，拆箱
+        q.push(1);
+        q.push(2);
+        q.push(3);
+        q.push(4);
+        StackCopy<Integer> r = new StackCopy<>(q);
+        for (int x : r)
+            StdOut.print(x + " ");
+        StdOut.println();
     }
 }
