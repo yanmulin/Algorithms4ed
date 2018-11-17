@@ -3,14 +3,18 @@ package chapter2_1;
 import edu.princeton.cs.algs4.StdOut;
 
 public class InsertionSort {
-    public static void Sort(Comparable[] a) {
-        for (int i = 1; i < a.length; i++) {
-            for (int j = i; j > 0; j--) {
+    public static void Sort(Comparable[] a, int lo, int hi) {
+        for (int i = lo + 1; i <= hi; i++) {
+            for (int j = i; j > lo; j--) {
                 if (less(a[j], a[j - 1]) > 0)
                     exch(a, j - 1, j);
                 else break;
             }
         }
+    }
+
+    public static void Sort(Comparable[] a) {
+        Sort(a, 0, a.length - 1);
     }
 
     private static int less(Comparable a, Comparable b) {

@@ -1,5 +1,7 @@
 package chapter2_1;
 
+import chapter2_2.MergeSort;
+import chapter2_2.NaturalMergeSort;
 import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.StdRandom;
 import edu.princeton.cs.algs4.Stopwatch;
@@ -12,6 +14,8 @@ public class SortCompare {
         else if (alg.equals("Shell")) ShellSort.Sort(a);
         else if (alg.equals("Shell_experiment")) ShellSort_experiment.Sort(a);
         else if (alg.equals("Shell_count")) ShellSort_count.Sort(a);
+        else if (alg.equals("MergeSort")) MergeSort.Sort(a);
+        else if (alg.equals("NaturalMergeSort")) NaturalMergeSort.Sort(a);
         return timer.elapsedTime();
     }
 
@@ -34,7 +38,7 @@ public class SortCompare {
         int T = Integer.parseInt(args[3]);
         double t1 = timeRandomInput(alg1, N, T);
         double t2 = timeRandomInput(alg2, N, T);
-        StdOut.printf("For %d random Doubles\n\t%s is", N, alg1);
-        StdOut.printf(" %.1f times faster than %s\n", t2 / t1, alg2);
+        StdOut.printf("For %d random Doubles\n\t%s takes", N, alg1);
+        StdOut.printf(" %.1fs,\n\t%s takes %.1fs.\n", t1, alg2, t2);
     }
 }
