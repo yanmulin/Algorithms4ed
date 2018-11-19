@@ -1,7 +1,7 @@
-package chapter2_1;
-
+import chapter2_1.*;
 import chapter2_2.MergeSort;
-import chapter2_2.NaturalMergeSort;
+import chapter2_3.QuickSort;
+import chapter2_3.QuickSortImproved;
 import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.StdRandom;
 import edu.princeton.cs.algs4.Stopwatch;
@@ -15,7 +15,8 @@ public class SortCompare {
         else if (alg.equals("Shell_experiment")) ShellSort_experiment.Sort(a);
         else if (alg.equals("Shell_count")) ShellSort_count.Sort(a);
         else if (alg.equals("MergeSort")) MergeSort.Sort(a);
-        else if (alg.equals("NaturalMergeSort")) NaturalMergeSort.Sort(a);
+        else if (alg.equals("QuickSort")) QuickSort.Sort(a);
+        else if (alg.equals("QuickSortImproved")) QuickSortImproved.Sort(a);
         return timer.elapsedTime();
     }
 
@@ -28,7 +29,7 @@ public class SortCompare {
             total += time(alg, a);
             assert InsertionSort.isSorted(a);
         }
-        return total;
+        return total / T;
     }
 
     public static void main(String[] args) {

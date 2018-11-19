@@ -1,17 +1,20 @@
 package chapter2_1;
 
 import edu.princeton.cs.algs4.StdOut;
+import edu.princeton.cs.algs4.StdRandom;
 
 public class SelectionSort {
-    public static void Sort(Comparable[] arr) {
-        for (int i = 0; i < arr.length; i++) {
+    public static void Sort(Comparable[] a, int lo, int hi) {
+        for (int i = lo; i <= hi; i++) {
             int min = i;
-            for (int j = i + 1; j < arr.length; j++) {
-                if (less(arr[j], arr[min]) > 0)
-                    min = j;
-            }
-            exch(arr, min, i);
+            for (int j = i + 1; j <= hi; j++)
+                min = less(a[j], a[min]) > 0 ? j : min;
+            exch(a, min, i);
         }
+    }
+
+    public static void Sort(Comparable[] arr) {
+        Sort(arr, 0, arr.length - 1);
     }
 
     private static int less(Comparable c1, Comparable c2) {
@@ -31,20 +34,14 @@ public class SelectionSort {
     }
 
     public static void main(String[] args) {
-        String[] a = {"ccc", "abb", "bbb", "aab", "bba"};
-        for (String i : a)
-            StdOut.print(i + " ");
-        StdOut.println();
-        StdOut.println(isSorted(a));
+        int n = Integer.parseInt(args[0]);
+        Double[] a = new Double[n];
+        for (int i = 0; i < n; i++)
+            a[i] = StdRandom.uniform();
         Sort(a);
-        StdOut.println(isSorted(a));
-
-        Integer[] b = {4, 6, 1, 7, 3, 5};
-        for (int i : b)
-            StdOut.print(i + " ");
+        for (double x : a)
+            StdOut.print(x + " ");
         StdOut.println();
-        StdOut.println(isSorted(b));
-        Sort(b);
-        StdOut.println(isSorted(b));
+        StdOut.println(isSorted(a));
     }
 }
