@@ -39,3 +39,5 @@ hs_err_pid*
 
 # else
 */.DS_Store
+*/.txt
+*/.png

@@ -1,13 +1,18 @@
-package ch1;
+package chapter1_3;
 
-public class Deque<Item> implements Iterable<Item>{
+import java.util.Iterator;
+
+public class Deque<Item> implements Iterable<Item> {
     private Node first, last;
+    private int sz = 0;
+
     private class Node {
         public Item item;
         public Node next;
         public Node prev;
     }
-    public void pushLeft(Item item){
+
+    public void pushLeft(Item item) {
         Node oldfirst = first;
         first = new Node();
         first.item = item;
@@ -15,48 +20,65 @@ public class Deque<Item> implements Iterable<Item>{
         first.prev = null;
         if (oldfirst == null) last = first;
         else oldfirst.prev = first;
-        sz ++;
+        sz++;
     }
-    public void pushRight(Item item){
+
+    public void pushRight(Item item) {
         Node oldlast = last;
         last = new Node();
         last.item = item;
         last.next = null;
         last.prev = oldlast;
         if (oldlast == null) first = last;
-        else oldlast.prev = last;
-        sz ++;
+        else oldlast.next = last;
+        sz++;
     }
-    public Item popLeft(){
+
+    public Item popLeft() {
         Item item = first.item;
         first = first.next;
         if (first == null) last = null;
         else first.prev = null;
-        sz --;
+        sz--;
         return item;
     }
-    public Item popRight(){
+
+    public Item popRight() {
         Item item = last.item;
         last = last.prev;
         if (last == null) first = null;
         else last.next = null;
-        sz --;
+        sz--;
         return item;
     }
-    public boolean isEmpty(){
+
+    public Item top() {
+        return first.item;
+    }
+
+    public Item tail() {
+        return last.item;
+    }
+
+    public boolean isEmpty() {
         return first == null;
     }
-    public int size(){
+
+    public int size() {
         return sz;
     }
-    public Iterator<Item> iterator(){
+
+    public Iterator<Item> iterator() {
         return new DequeueIterator();
     }
+
     private class DequeueIterator implements Iterator<Item> {
         private Node current = first;
+
         public boolean hasNext() {
             return current != null;
         }
+
         public Item next() {
             Item item = current.item;
             current = current.next;

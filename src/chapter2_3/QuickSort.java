@@ -9,7 +9,7 @@ public class QuickSort {
         Sort(a, 0, a.length - 1);
     }
 
-    private static void Sort(Comparable[] a, int lo, int hi) {
+    public static void Sort(Comparable[] a, int lo, int hi) {
         if (lo >= hi) return;
         int mid = Partition(a, lo, hi);
         Sort(a, lo, mid - 1);

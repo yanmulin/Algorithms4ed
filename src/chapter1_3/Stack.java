@@ -31,6 +31,10 @@ public class Stack<Item> implements Iterable<Item> {
         return item;
     }
 
+    public Item top() {
+        return first.item;
+    }
+
     public boolean isEmpty() {
         return first == null;
     }

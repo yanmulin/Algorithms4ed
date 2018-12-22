@@ -25,8 +25,8 @@ public class QuickSortImproved {
 
     private static int Partition(Comparable[] a, int lo, int hi) {
         int i = lo, j = hi + 1;
-        int mid = SampleMedian(a, lo, hi);
-        exch(a, mid, lo);
+        //int mid = SampleMedian(a, lo, hi);
+        //exch(a, mid, lo);
         while (true) {
             while (less(a[++i], a[lo]) > 0)
                 if (i >= hi) break;

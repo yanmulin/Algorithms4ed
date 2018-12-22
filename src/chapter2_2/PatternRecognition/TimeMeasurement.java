@@ -28,7 +28,8 @@ public class TimeMeasurement {
         int n = Integer.parseInt(args[0]);
         int grid = Integer.parseInt(args[1]);
         double t1 = time(n, grid, "FastCollinearPoint");
-        double t2 = time(n, grid, "BruteCollinearPoint");
+        double t2 = 0.0;//time(n, grid, "BruteCollinearPoint");
+        StdOut.printf("For %d random inputs in %d*%d grids,\n", n, grid, grid);
         StdOut.printf("FastCollinearPoint: %.1f\nBruteCollinearPoint: %.1f\n", t1, t2);
     }
 }

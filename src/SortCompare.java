@@ -1,7 +1,6 @@
 import chapter2_1.*;
 import chapter2_2.MergeSort;
-import chapter2_3.QuickSort;
-import chapter2_3.QuickSortImproved;
+import chapter2_3.*;
 import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.StdRandom;
 import edu.princeton.cs.algs4.Stopwatch;
@@ -17,19 +16,23 @@ public class SortCompare {
         else if (alg.equals("MergeSort")) MergeSort.Sort(a);
         else if (alg.equals("QuickSort")) QuickSort.Sort(a);
         else if (alg.equals("QuickSortImproved")) QuickSortImproved.Sort(a);
+        else if (alg.equals("QuickSort5Samples")) QuickSort5Samples.Sort(a);
+        else if (alg.equals("QuickSortX")) QuickSortX.Sort(a);
+        else if (alg.equals("QuickSort3WayPartition")) QuickSort3wayPartition.Sort(a);
+        else if (alg.equals("QuickSortQuick3Way")) QuickSortQuick3Way.Sort(a);
         return timer.elapsedTime();
     }
 
     public static double timeRandomInput(String alg, int N, int T) {
         double total = 0.0;
         for (int i = 0; i < T; i++) {
-            Double[] a = new Double[N];
+            Integer[] a = new Integer[N];
             for (int j = 0; j < N; j++)
-                a[j] = StdRandom.uniform();
+                a[j] = StdRandom.uniform(100);
             total += time(alg, a);
             assert InsertionSort.isSorted(a);
         }
-        return total / T;
+        return total;
     }
 
     public static void main(String[] args) {
